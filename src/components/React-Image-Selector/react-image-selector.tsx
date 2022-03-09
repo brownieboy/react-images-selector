@@ -9,31 +9,47 @@ export type ImageType = {
   src: string;
 };
 
-export const calculateCurrentSelections = (toggledImage: string | ImageType, selectedImageValues: string[]) => {
-  const valueToCheck = typeof toggledImage === "string" ? toggledImage : toggledImage?.value;
+export const calculateCurrentSelections = (
+  toggledImage: string | ImageType,
+  selectedImageValues: string[]
+) => {
+  const valueToCheck =
+    typeof toggledImage === "string" ? toggledImage : toggledImage?.value;
 
   if (selectedImageValues.includes(valueToCheck)) {
-    return selectedImageValues.filter((member: string) => member !== valueToCheck);
+    return selectedImageValues.filter(
+      (member: string) => member !== valueToCheck
+    );
   } else {
     return [...selectedImageValues, valueToCheck];
   }
 };
 
 export interface ReactImageSelectorProps {
-  /*
-   * Array of images
+  /**
+   * An array of images.
    */
   images?: ImageType[];
+  /**
+   * An array of currently selected image values
+   */
+  selectedImageValues: string[];
   /**
    * If true, use checkboxes multi-select, otherwise radio single-select
    */
   multiple?: boolean;
+  /**
+   * Function handler, called when image is clicked
+   */
   onPick?(image: ImageType): void;
-  selectedImageValues: string[];
+
   imageStyles?: any;
   SelectorControl?: any;
 }
 
+/**
+ * A React selector for images, single or multi-choice.
+ */
 export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
   images,
   onPick,
