@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.5.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
@@ -61,8 +64,10 @@
     "@storybook/manager-webpack5": "^6.4.19",
     "@storybook/node-logger": "^6.4.19",
     "@storybook/preset-create-react-app": "^4.0.1",
+    "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.4.19",
     "@storybook/testing-library": "^0.0.9",
+    "sass-loader": "^12.6.0",
     "webpack": "^5.70.0"
   }
 }
