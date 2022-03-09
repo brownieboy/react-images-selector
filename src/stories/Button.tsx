@@ -11,7 +11,7 @@ interface ButtonProps {
    */
   backgroundColor?: string;
   /**
-   * How large should the button be?
+   * How large should the button be? (three choices)
    */
   size?: 'small' | 'medium' | 'large';
   /**

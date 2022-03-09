@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { ComponentStory } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import Checkbox from "@mui/material/Checkbox";
 import Radio from "@mui/material/Radio";
 
-import ReactImageSelector, {
+import {
+  ReactImageSelector,
   calculateCurrentSelections,
   ImageType,
 } from "../components/React-Image-Selector/react-image-selector";
@@ -24,7 +25,7 @@ const availableImages = [
 export default {
   title: "React Image Selector",
   component: ReactImageSelector,
-};
+} as ComponentMeta<typeof ReactImageSelector>;
 
 const Template: ComponentStory<typeof ReactImageSelector> = ({
   multiple,

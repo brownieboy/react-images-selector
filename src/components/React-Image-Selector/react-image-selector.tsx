@@ -24,6 +24,9 @@ export interface ReactImageSelectorProps {
    * Array of images
    */
   images?: ImageType[];
+  /**
+   * If true, use checkboxes multi-select, otherwise radio single-select
+   */
   multiple?: boolean;
   onPick?(image: ImageType): void;
   selectedImageValues: string[];
@@ -31,12 +34,12 @@ export interface ReactImageSelectorProps {
   SelectorControl?: any;
 }
 
-const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
+export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
   images,
   onPick,
   selectedImageValues,
   imageStyles,
-  multiple,
+  multiple = false,
   SelectorControl,
 }) => {
   const handleImageClick = (image: ImageType) => {
