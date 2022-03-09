@@ -27,7 +27,7 @@ export const calculateCurrentSelections = (
 
 export interface ReactImageSelectorProps {
   /**
-   * An array of images.
+   * An array of the images available for selection.
    */
   images?: ImageType[];
   /**
@@ -42,8 +42,14 @@ export interface ReactImageSelectorProps {
    * Function handler, called when image is clicked
    */
   onPick?(image: ImageType): void;
-
+  /**
+   * Styles object to override styles for the individual images
+   */
   imageStyles?: any;
+  /**
+   * React control to pass in place of the standard HTML checkbox or radio
+   * controls
+   */
   SelectorControl?: any;
 }
 

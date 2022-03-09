@@ -69,7 +69,7 @@ const Template: ComponentStory<typeof ReactImageSelector> = ({
             checked={materialControls}
             onChange={handleMaterialControls}
           />
-          Pass in Material controls
+          Use Material {multiple ? "checkbox" : "radio button"} controls
         </label>
       </div>
     </>
