@@ -16,10 +16,10 @@ const logEvent = (evt: any) => {
 
 // TODO - Move to API call, e.g. MirageJS
 const availableImages = [
-  { src: "/assets/200.jpg", value: "200" },
-  { src: "/assets/201.jpg", value: "201" },
-  { src: "/assets/202.jpg", value: "202" },
-  { src: "/assets/203.jpg", value: "203" },
+  { src: "/assets/chinstrap.jpg", value: "chinstrap" },
+  { src: "/assets/emperor.jpg", value: "emperor" },
+  { src: "/assets/king.jpg", value: "king" },
+  { src: "/assets/little.jpg", value: "little" },
 ];
 
 export default {
@@ -31,7 +31,7 @@ const Template: ComponentStory<typeof ReactImageSelector> = ({
   multiple,
   imageStyles,
 }) => {
-  const [selectedImageValues, setSelectedImageValues] = useState(["203"]);
+  const [selectedImageValues, setSelectedImageValues] = useState(["emperor"]);
   const [materialControls, setMaterialControls] = useState(false);
 
   const SelectorControl = multiple ? Checkbox : Radio;
