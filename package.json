@@ -1,7 +1,13 @@
 {
   "name": "react-image-selector",
+  "description": "React component to picks images from gallery",
+  "author": "Michael Brown",
   "version": "0.1.0",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:brownieboy/react-image-selector.git"
+  },
+  "homepage": "https://github.com/brownieboy/react-image-selector",
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
