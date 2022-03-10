@@ -31,7 +31,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "rimraf storybook-static && build-storybook",
+    "build-storybook-docs": "rimraf storybook-static-docs && build-storybook --docs -o storybook-static-docs"
   },
   "eslintConfig": {
     "extends": [
@@ -74,6 +75,7 @@
     "@storybook/react": "^6.4.19",
     "@storybook/testing-library": "^0.0.9",
     "css-loader": "^6.7.1",
+    "gh-pages": "^3.2.3",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",

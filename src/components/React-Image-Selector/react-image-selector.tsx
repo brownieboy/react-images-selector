@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 
-import "./styles.scss";
+import "./styles.css";
 
 import Image from "./image";
 
