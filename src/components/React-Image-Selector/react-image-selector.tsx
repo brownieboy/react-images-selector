@@ -3,11 +3,7 @@ import React, { FunctionComponent } from "react";
 import "./styles.css";
 
 import Image from "./image";
-
-export type ImageType = {
-  value: string;
-  src: string;
-};
+import { ImageType } from "./types";
 
 export const calculateCurrentSelections = (
   toggledImage: string | ImageType,
@@ -51,6 +47,11 @@ export interface ReactImageSelectorProps {
    * controls
    */
   SelectorControl?: any;
+  /**
+   * If any `selectedImageValues` are passed that are not in `images`, then this
+   * prop will decide if a message is shown
+   */
+  warnIfImagesUnavailable?: boolean;
 }
 
 /**
@@ -63,6 +64,7 @@ export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
   imageStyles,
   multiple = false,
   SelectorControl,
+  warnIfImagesUnavailable = false,
 }) => {
   const handleImageClick = (image: ImageType) => {
     if (typeof onPick === "function") {
@@ -71,29 +73,24 @@ export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
   };
 
   const availableValuesArray = images?.map((image) => image.value);
+
   const selectedButUnavailable = selectedImageValues.filter(
     (imageValue) => !availableValuesArray?.includes(imageValue)
   );
-  console.log(
-    "TCL ~ file: react-image-selector.tsx ~ line 75 ~ selectedButUnavailable",
-    selectedButUnavailable
-  );
 
   const renderUnavailable = () => {
-    if (selectedButUnavailable.length === 0) {
+    if (!warnIfImagesUnavailable || selectedButUnavailable.length === 0) {
       return null;
     }
     return (
       <div>
         <p>
           The following selected values were not in the available images list:
-          <ul>
-            {selectedButUnavailable.map((value) => (
-              <li>{value}</li>
-            ))}
-          </ul>
+          <span>
+            {" "}
+            {selectedButUnavailable.map((value) => `"${value}"`).join(", ")}.
+          </span>
         </p>
-        <div></div>
       </div>
     );
   };
@@ -101,7 +98,7 @@ export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
   const renderImage = (image: ImageType, i: React.Key) => {
     return (
       <Image
-        src={image.src}
+        image={image}
         isSelected={selectedImageValues.includes(image.value)}
         onImageClick={() => handleImageClick(image)}
         key={i}
