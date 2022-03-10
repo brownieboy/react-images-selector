@@ -70,6 +70,34 @@ export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
     }
   };
 
+  const availableValuesArray = images?.map((image) => image.value);
+  const selectedButUnavailable = selectedImageValues.filter(
+    (imageValue) => !availableValuesArray?.includes(imageValue)
+  );
+  console.log(
+    "TCL ~ file: react-image-selector.tsx ~ line 75 ~ selectedButUnavailable",
+    selectedButUnavailable
+  );
+
+  const renderUnavailable = () => {
+    if (selectedButUnavailable.length === 0) {
+      return null;
+    }
+    return (
+      <div>
+        <p>
+          The following selected values were not in the available images list:
+          <ul>
+            {selectedButUnavailable.map((value) => (
+              <li>{value}</li>
+            ))}
+          </ul>
+        </p>
+        <div></div>
+      </div>
+    );
+  };
+
   const renderImage = (image: ImageType, i: React.Key) => {
     return (
       <Image
@@ -85,10 +113,13 @@ export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
   };
 
   return images ? (
-    <div className="image_picker">
-      {images.map(renderImage)}
-      <div className="clear" />
-    </div>
+    <>
+      <div className="image_picker">
+        {images.map(renderImage)}
+        <div className="clear" />
+      </div>
+      {renderUnavailable()}
+    </>
   ) : (
     <div>Awaiting supplied images...</div>
   );
