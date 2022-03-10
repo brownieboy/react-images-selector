@@ -7,9 +7,9 @@ import Radio from "@mui/material/Radio";
 import {
   ReactImageSelector,
   calculateCurrentSelections,
-  ImageType,
+  // ImageType,
 } from "react-image-selector";
-// import { ImageType } from "../components/React-Image-Selector/types";
+// import { ImageType } from "react-image-selector/types";
 
 const logEvent = (evt: any) => {
   action(evt.type)(evt.detail);
@@ -38,9 +38,12 @@ const Template: ComponentStory<typeof ReactImageSelector> = ({
   ]);
   const [materialControls, setMaterialControls] = useState(false);
 
+  // console.log("TCL ~ file: React-Image-Selector.stories.tsx ~ line 13 ~ ImageType", ImageType);
+
+
   const SelectorControl = multiple ? Checkbox : Radio;
 
-  const handleOnPick = (image: ImageType) => {
+  const handleOnPick = (image: any) => {
     const newSelections = multiple
       ? calculateCurrentSelections(image, selectedImageValues)
       : [image?.value];

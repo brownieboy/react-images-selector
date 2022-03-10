@@ -1,5 +1,5 @@
 import typescript from "@rollup/plugin-typescript";
-import typescriptEngine from "typescript";
+// import typescriptEngine from "typescript";
 import postcss from "rollup-plugin-postcss";
 
 const config = {
@@ -10,7 +10,7 @@ const config = {
   },
   plugins: [
     typescript({
-      typescript: typescriptEngine,
+      tsconfig: "./tsconfig.json",
     }),
     postcss({
       plugins: [],
