@@ -31,7 +31,7 @@ const Template: ComponentStory<typeof ReactImageSelector> = ({
   multiple,
   imageStyles,
 }) => {
-  const [selectedImageValues, setSelectedImageValues] = useState(["emperor"]);
+  const [selectedImageValues, setSelectedImageValues] = useState(["emperor", "unknown"]);
   const [materialControls, setMaterialControls] = useState(false);
 
   const SelectorControl = multiple ? Checkbox : Radio;
