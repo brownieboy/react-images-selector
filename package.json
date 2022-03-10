@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git@github.com:brownieboy/react-image-selector.git"
   },
-  "homepage": "https://github.com/brownieboy/react-image-selector",
+  "homepage": "https://brownieboy.github.io/react-image-selector/",
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
@@ -32,7 +32,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "rimraf storybook-static && build-storybook",
-    "build-storybook-docs": "rimraf storybook-static-docs && build-storybook --docs -o storybook-static-docs"
+    "build-storybook-docs": "rimraf storybook-static && build-storybook --docs",
+    "deploy-storybook": "gh-pages -d storybook-static"
   },
   "eslintConfig": {
     "extends": [
