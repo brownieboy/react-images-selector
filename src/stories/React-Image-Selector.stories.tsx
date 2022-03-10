@@ -7,8 +7,9 @@ import Radio from "@mui/material/Radio";
 import {
   ReactImageSelector,
   calculateCurrentSelections,
-} from "../components/React-Image-Selector/react-image-selector";
-import { ImageType } from "../components/React-Image-Selector/types";
+  // ImageType,
+} from "react-image-selector";
+// import { ImageType } from "../components/React-Image-Selector/types";
 
 const logEvent = (evt: any) => {
   action(evt.type)(evt.detail);
@@ -39,7 +40,7 @@ const Template: ComponentStory<typeof ReactImageSelector> = ({
 
   const SelectorControl = multiple ? Checkbox : Radio;
 
-  const handleOnPick = (image: ImageType) => {
+  const handleOnPick = (image: any) => {
     const newSelections = multiple
       ? calculateCurrentSelections(image, selectedImageValues)
       : [image?.value];
