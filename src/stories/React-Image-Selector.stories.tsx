@@ -16,10 +16,10 @@ const logEvent = (evt: any) => {
 
 // TODO - Move to API call, e.g. MirageJS
 const availableImages = [
-  { src: "/assets/chinstrap.jpg", value: "chinstrap" },
-  { src: "/assets/emperor.jpg", value: "emperor" },
-  { src: "/assets/king.jpg", value: "king" },
-  { src: "/assets/little.jpg", value: "little" },
+  { src: "./assets/chinstrap.jpg", value: "chinstrap" },
+  { src: "./assets/emperor.jpg", value: "emperor" },
+  { src: "./assets/king.jpg", value: "king" },
+  { src: "./assets/little.jpg", value: "little" },
 ];
 
 export default {
