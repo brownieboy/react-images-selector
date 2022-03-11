@@ -5,6 +5,8 @@ import "./styles.css";
 import Image from "./image";
 import { ImageType } from "./types";
 
+export type {ImageType as ImageTypeExport};
+
 export const calculateCurrentSelections = (
   toggledImage: string | ImageType,
   selectedImageValues: string[]

@@ -11,7 +11,7 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
-  "types": "dist/types/image.d.ts",
+  "types": "dist/types/react-image-selector.d.ts",
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
@@ -35,6 +35,7 @@
     "testsite": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "rimraf dist && rollup -c",
+    "build:watch": "rollup -c -w",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "rimraf storybook-static && build-storybook",
     "build-storybook-docs": "rimraf storybook-static && build-storybook --docs",
