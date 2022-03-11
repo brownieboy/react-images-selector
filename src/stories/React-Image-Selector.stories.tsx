@@ -60,7 +60,7 @@ const Template: ComponentStory<typeof ReactImageSelector> = ({
   return (
     <>
       <ReactImageSelector
-        images={availableImages}
+        availableImages={availableImages}
         onPick={handleOnPick}
         selectedImageValues={selectedImageValues}
         imageStyles={imageStyles}

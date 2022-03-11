@@ -9,7 +9,13 @@ interface ImageProps {
 }
 
 export type ImageType = {
+  /**
+   * A string value that is assumed to be unique to this image.  It can be the file name.
+   */
   value: string;
+  /**
+   * A URL pointing to where the image is hosted
+   */
   src: string;
 };
 

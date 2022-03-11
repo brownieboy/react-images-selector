@@ -27,7 +27,7 @@ export interface ReactImageSelectorProps {
   /**
    * An array of the images available for selection.
    */
-  images?: ImageType[];
+  availableImages: ImageType[];
   /**
    * An array of currently selected image values
    */
@@ -60,7 +60,7 @@ export interface ReactImageSelectorProps {
  * A React selector for images, single or multi-choice.
  */
 export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
-  images,
+  availableImages,
   onPick,
   selectedImageValues,
   imageStyles,
@@ -74,11 +74,11 @@ export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
     }
   };
 
-  const availableValuesArray = images?.map((image) => image.value);
+  const availableValuesArray = availableImages?.map((image) => image.value);
 
-  const selectedButUnavailable = selectedImageValues.filter(
+  const selectedButUnavailable = selectedImageValues?.filter(
     (imageValue) => !availableValuesArray?.includes(imageValue)
-  );
+  ) || [];
 
   const renderUnavailable = () => {
     if (!warnIfImagesUnavailable || selectedButUnavailable.length === 0) {
@@ -101,7 +101,7 @@ export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
     return (
       <Image
         image={image}
-        isSelected={selectedImageValues.includes(image.value)}
+        isSelected={selectedImageValues?.includes(image.value) || false}
         onImageClick={() => handleImageClick(image)}
         key={i}
         multiple={multiple}
@@ -111,10 +111,10 @@ export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
     );
   };
 
-  return images ? (
+  return availableImages ? (
     <>
       <div className="image_picker">
-        {images.map(renderImage)}
+        {availableImages.map(renderImage)}
         <div className="clear" />
       </div>
       {renderUnavailable()}
