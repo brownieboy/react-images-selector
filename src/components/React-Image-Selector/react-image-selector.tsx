@@ -3,9 +3,9 @@ import React, { FunctionComponent } from "react";
 import "./styles.css";
 
 import Image from "./image";
-import { ImageType } from "./types";
+import type { ImageType } from "./image";
 
-export type {ImageType as ImageTypeExport};
+export type { ImageType as RISImageType };
 
 export const calculateCurrentSelections = (
   toggledImage: string | ImageType,

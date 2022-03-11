@@ -7,9 +7,10 @@ import Radio from "@mui/material/Radio";
 import {
   ReactImageSelector,
   calculateCurrentSelections,
-  ImageTypeExport,
 } from "react-image-selector";
-  console.log("TCL ~ file: React-Image-Selector.stories.tsx ~ line 12 ~ ImageTypeExport", ImageTypeExport);
+
+import type { RISImageType } from "react-image-selector";
+
 // import { ImageType } from "react-image-selector/types";
 
 const logEvent = (evt: any) => {
@@ -41,7 +42,7 @@ const Template: ComponentStory<typeof ReactImageSelector> = ({
 
   const SelectorControl = multiple ? Checkbox : Radio;
 
-  const handleOnPick = (image: ImageTypeExport) => {
+  const handleOnPick = (image: RISImageType) => {
     const newSelections = multiple
       ? calculateCurrentSelections(image, selectedImageValues)
       : [image?.value];

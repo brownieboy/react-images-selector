@@ -1,6 +1,4 @@
 import { FunctionComponent } from "react";
-import { ImageType } from "./types";
-
 interface ImageProps {
   image: ImageType;
   isSelected?: boolean;
@@ -9,6 +7,11 @@ interface ImageProps {
   SelectorControl: any;
   multiple?: boolean;
 }
+
+export type ImageType = {
+  value: string;
+  src: string;
+};
 
 const Image: FunctionComponent<ImageProps> = ({
   image,
