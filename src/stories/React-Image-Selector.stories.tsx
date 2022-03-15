@@ -40,18 +40,9 @@ const Template: ComponentStory<typeof ReactImageSelector> = ({
   const SelectorControl = multiple ? Checkbox : Radio;
 
   const handleOnPick = (image: any) => {
-    console.log(
-      "TCL ~ file: React-Image-Selector.stories.tsx ~ line 46 ~ handleOnPick ~ image",
-      image
-    );
     const newSelections = multiple
       ? calculateCurrentSelections(image, selectedImageValues)
       : [image?.value];
-
-    console.log(
-      "TCL ~ file: React-Image-Selector.stories.tsx ~ line 48 ~ handleOnPick ~ newSelections",
-      newSelections
-    );
 
     setSelectedImageValues(newSelections);
     logEvent({
