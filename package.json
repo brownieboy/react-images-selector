@@ -8,10 +8,10 @@
     "url": "git@github.com:brownieboy/react-image-selector.git"
   },
   "homepage": "https://brownieboy.github.io/react-image-selector/",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
-  "types": "dist/types/react-image-selector.d.ts",
+  "main": "dist/react-image-selector.js",
+  "module": "dist/react-image-selector.js",
+  "jsnext:main": "dist/react-image-selector.js",
+  "types": "dist/react-image-selector.d.ts",
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",

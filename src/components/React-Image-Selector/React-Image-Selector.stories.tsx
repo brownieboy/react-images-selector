@@ -4,9 +4,12 @@ import { action } from "@storybook/addon-actions";
 import Checkbox from "@mui/material/Checkbox";
 import Radio from "@mui/material/Radio";
 
-import { ReactImageSelector, calculateCurrentSelections } from "../../../dist";
+import {
+  ReactImageSelector,
+  calculateCurrentSelections,
+} from "react-image-selector";
 
-// import type { RISImageType } from "../../dist";
+import type { RISImageType } from "react-image-selector";
 
 // import { ImageType } from "react-image-selector/types";
 
@@ -39,7 +42,7 @@ const Template: ComponentStory<typeof ReactImageSelector> = ({
 
   const SelectorControl = multiple ? Checkbox : Radio;
 
-  const handleOnPick = (image: any) => {
+  const handleOnPick = (image: RISImageType) => {
     const newSelections = multiple
       ? calculateCurrentSelections(image, selectedImageValues)
       : [image?.value];

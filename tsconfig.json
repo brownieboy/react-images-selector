@@ -16,12 +16,13 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
     "jsx": "react-jsx",
     "declaration": true,
     "declarationMap": true,
-    "outDir": "types"
+    "declarationDir": "dist",
+    // "outDir": "types"
   },
   "include": [
     "src/components"

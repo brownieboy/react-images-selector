@@ -5,7 +5,7 @@ import postcss from "rollup-plugin-postcss";
 const config = {
   input: "src/components/React-Image-Selector/react-image-selector.tsx",
   output: {
-    file: "dist/index.js",
+    dir: "dist",
     // format: "cjs",
   },
   plugins: [
