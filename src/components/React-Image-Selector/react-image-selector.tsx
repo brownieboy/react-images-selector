@@ -18,10 +18,16 @@ export const calculateCurrentSelections = (
   const valueToCheck =
     typeof toggledImage === "string" ? toggledImage : toggledImage?.value;
 
+  console.log(
+    "TCL ~ file: react-image-selector.tsx ~ line 19 ~ valueToCheck",
+    valueToCheck
+  );
+
   const selectedImageValues = selectedImages.map((image) =>
     // @ts-ignore
     image.value ? image.value : image
   );
+  console.log("TCL ~ file: react-image-selector.tsx ~ line 30 ~ selectedImageValues", selectedImageValues);
 
   if (selectedImageValues.includes(valueToCheck)) {
     return selectedImageValues.filter(
@@ -77,10 +83,10 @@ export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
   SelectorControl,
   warnIfImagesUnavailable = false,
 }) => {
-  // console.log(
-  //   "TCL ~ file: react-image-selector.tsx ~ line 84 ~ selectedImages, availableImages",
-  //   { selectedImages, availableImages }
-  // );
+  console.log(
+    "TCL ~ file: react-image-selector.tsx ~ line 84 ~ selectedImages, availableImages",
+    { selectedImages, availableImages }
+  );
   const handleImageClick = (image: ImageType) => {
     if (typeof onPick === "function") {
       onPick(image);
