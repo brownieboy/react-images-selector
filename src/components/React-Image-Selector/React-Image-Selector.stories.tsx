@@ -4,7 +4,7 @@ import { action } from "@storybook/addon-actions";
 import Checkbox from "@mui/material/Checkbox";
 import Radio from "@mui/material/Radio";
 
-import { ReactImageSelector, calculateCurrentSelections } from "../../dist";
+import { ReactImageSelector, calculateCurrentSelections } from "../../../dist";
 
 // import type { RISImageType } from "../../dist";
 
