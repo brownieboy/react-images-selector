@@ -1,9 +1,5 @@
-import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Story, Canvas, Meta } from "@storybook/addon-docs/blocks";
 import { action } from "@storybook/addon-actions";
-import { Meta } from "@storybook/addon-docs";
-import Checkbox from "@mui/material/Checkbox";
-import Radio from "@mui/material/Radio";
 
 import {
   ReactImageSelector,
@@ -14,82 +10,12 @@ import {
 // import type { RISImageType } from "react-image-selector";
 import type { RISImageType } from "../components/React-Image-Selector/react-image-selector";
 
-<Meta title="React Image Selector" />
+<Meta title="React Image Selector" component="ReactImageSelector" />
 
-# Welcome to React Image Selector.
-Blah, blah, blah..
-
-// export default {
-//   title: "React Image Selector",
-//   component: ReactImageSelector,
-// } as ComponentMeta<typeof ReactImageSelector>;
-
-export const Template: ComponentStory<typeof ReactImageSelector> = ({
-  multiple,
-  imageStyles,
-}) => {
-  const logEvent = (evt: any) => {
-  action(evt.type)(evt.detail);
-};
-// TODO - Move to API call, e.g. MirageJS
-const availableImages = [
-  { src: "./assets/chinstrap.jpg", value: "chinstrap" },
-  { src: "./assets/emperor.jpg", value: "emperor" },
-  { src: "./assets/king.jpg", value: "king" },
-  { src: "./assets/little.jpg", value: "little" },
-];
-  const [selectedImageValues, setSelectedImageValues] = useState([
-    "emperor",
-    "unknown",
-  ]);
-  const [materialControls, setMaterialControls] = useState(false);
-  const SelectorControl = multiple ? Checkbox : Radio;
-  const handleOnPick = (image: RISImageType) => {
-    const newSelections = multiple
-      ? calculateCurrentSelections(image, selectedImageValues)
-      : [image?.value];
-    setSelectedImageValues(newSelections);
-    logEvent({
-      type: "onPick",
-      detail: { imageSelected: image, newSelections },
-    });
-  };
-  const handleMaterialControls = () => {
-    setMaterialControls(!materialControls);
-  };
-  return (
-    <>
-      <ReactImageSelector
-        availableImages={availableImages}
-        onPick={handleOnPick}
-        selectedImages={selectedImageValues}
-        imageStyles={imageStyles}
-        multiple={multiple}
-        SelectorControl={materialControls ? SelectorControl : undefined}
-      />
-      <div style={{ marginTop: "50px" }}>
-        <label htmlFor="usematerial">
-          <input
-            type="checkbox"
-            id="usematerial"
-            checked={materialControls}
-            onChange={handleMaterialControls}
-          />
-          Use Material {multiple ? "checkbox" : "radio button"} controls
-        </label>
-      </div>
-    </>
-  );
+export const Template = () => {
+  return <div>Hey there</div>;
 };
 
-export const Default = Template.bind({});
+# React Image Selector
 
-export Default.args = {
-multiple: true,
-imageStyles: {
-maxHeight: 300,
-maxWidth: 300,
-height: 150,
-width: 150,
-},
-};
+Blah blah blah about React Image Selector
