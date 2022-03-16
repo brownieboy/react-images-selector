@@ -7,11 +7,11 @@ import Radio from "@mui/material/Radio";
 import {
   ReactImageSelector,
   calculateCurrentSelections,
-} from "react-image-selector";
+  // } from "react-image-selector";
+} from "../components/React-Image-Selector/react-image-selector";
 
-import type { RISImageType } from "react-image-selector";
-
-// import { ImageType } from "react-image-selector/types";
+// import type { RISImageType } from "react-image-selector";
+import type { RISImageType } from "../components/React-Image-Selector/react-image-selector";
 
 const logEvent = (evt: any) => {
   action(evt.type)(evt.detail);
