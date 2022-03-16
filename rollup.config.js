@@ -17,6 +17,7 @@ const config = {
       minimize: true,
     }),
   ],
+  external: ["react/jsx-runtime"], // <-- suppresses the warning
 };
 
 export default config;
