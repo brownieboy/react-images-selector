@@ -6,15 +6,33 @@ import { ReactImageSelector } from "../components/React-Image-Selector/react-ima
 
 # React Image Selector
 
-With `MDX` we can define a story for `React Image Selector` right in the middle of our
-markdown documentation.
+With `MDX` we can define a story for `React Image Selector` right in the middle of our markdown documentation.  Defaults 2
+
+export const availableImages = [
+  { src: "./assets/chinstrap.jpg", value: "chinstrap" },
+  { src: "./assets/emperor.jpg", value: "emperor" },
+  { src: "./assets/king.jpg", value: "king" },
+  { src: "./assets/little.jpg", value: "little" },
+];
+
+export const args = {
+  multiple: true,
+  imageStyles: {
+    maxHeight: 300,
+    maxWidth: 300,
+    height: 150,
+    width: 150,
+  },
+};
+
+export const logEvent = (evt) => {
+  action(evt.type)(evt.detail);
+};
 
 <Canvas>
   <Story name="RIS Default">
-    <form>
-      <Button id="Unchecked" label="Unchecked" />
-      <Button id="Checked" label="Checked" checked />
-      <Button appearance="secondary" id="second" label="Secondary" checked />
-    </form>
+      <ReactImageSelector
+        availableImages={availableImages}
+      />
   </Story>
 </Canvas>
