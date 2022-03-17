@@ -41,6 +41,7 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
     "unknown",
   ]);
   const [materialControls, setMaterialControls] = useState(false);
+  const docsMode = window.location.search.includes("viewMode=docs");
   const SelectorControl = multiple ? Checkbox : Radio;
   const handleOnPick = (image) => {
     const newSelections = multiple
@@ -63,19 +64,23 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
         onPick={handleOnPick}
         imageStyles={imageStyles}
         multiple={multiple}
-        SelectorControl={materialControls ? SelectorControl : undefined}
+        SelectorControl={
+          materialControls && !docsMode ? SelectorControl : undefined
+        }
       />
-      <div style={{ marginTop: "50px" }}>
-        <label htmlFor="usematerial">
-          <input
-            type="checkbox"
-            id="usematerial"
-            checked={materialControls}
-            onChange={handleMaterialControls}
-          />
-          Use Material {multiple ? "checkbox" : "radio button"} controls
-        </label>
-      </div>
+      {!docsMode ? (
+        <div style={{ marginTop: "50px" }}>
+          <label htmlFor="usematerial">
+            <input
+              type="checkbox"
+              id="usematerial"
+              checked={materialControls}
+              onChange={handleMaterialControls}
+            />
+            Use Material {multiple ? "checkbox" : "radio button"} controls
+          </label>
+        </div>
+      ) : null}
     </>
   );
 };
