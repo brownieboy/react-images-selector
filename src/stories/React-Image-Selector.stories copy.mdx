@@ -1,0 +1,90 @@
+import { useState } from "react";
+import { Story, Canvas, Meta } from "@storybook/addon-docs/blocks";
+import { action } from "@storybook/addon-actions";
+import Checkbox from "@mui/material/Checkbox";
+import Radio from "@mui/material/Radio";
+
+import {
+  ReactImageSelector,
+  calculateCurrentSelections,
+} from "../components/React-Image-Selector/react-image-selector";
+
+<Meta title="React Image Selector" component="ReactImageSelector" />
+
+export const availableImages = [
+  { src: "./assets/chinstrap.jpg", value: "chinstrap" },
+  { src: "./assets/emperor.jpg", value: "emperor" },
+  { src: "./assets/king.jpg", value: "king" },
+  { src: "./assets/little.jpg", value: "little" },
+];
+
+export const args = {
+  multiple: true,
+  imageStyles: {
+    maxHeight: 300,
+    maxWidth: 300,
+    height: 150,
+    width: 150,
+  },
+};
+
+export const logEvent = (evt) => {
+  action(evt.type)(evt.detail);
+};
+
+export const Template = ({ multiple, imageStyles }) => {
+  const [selectedImageValues, setSelectedImageValues] = useState([
+    "emperor",
+    "unknown",
+  ]);
+  const [materialControls, setMaterialControls] = useState(false);
+  const SelectorControl = multiple ? Checkbox : Radio;
+  const handleOnPick = (image) => {
+    const newSelections = multiple
+      ? calculateCurrentSelections(image, selectedImageValues)
+      : [image?.value];
+    setSelectedImageValues(newSelections);
+    logEvent({
+      type: "onPick",
+      detail: { imageSelected: image, newSelections },
+    });
+  };
+  const handleMaterialControls = () => {
+    setMaterialControls(!materialControls);
+  };
+  return (
+    <>
+      <ReactImageSelector
+        availableImages={availableImages}
+        onPick={handleOnPick}
+        selectedImages={selectedImageValues}
+        imageStyles={imageStyles}
+        multiple={multiple}
+        SelectorControl={materialControls ? SelectorControl : undefined}
+      />
+      <div style={{ marginTop: "50px" }}>
+        <label htmlFor="usematerial">
+          <input
+            type="checkbox"
+            id="usematerial"
+            checked={materialControls}
+            onChange={handleMaterialControls}
+          />
+          Use Material {multiple ? "checkbox" : "radio button"} controls
+        </label>
+      </div>
+    </>
+  );
+};
+
+# React Image Selector
+
+Blah blah blah about React Image Selector
+
+## Demo
+
+<Canvas>
+  <Story name="Default" args={args}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
