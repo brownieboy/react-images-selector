@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
-import { Button } from "./Button";
-import { ReactImageSelector } from "../components/React-Image-Selector/react-image-selector";
+import { action } from "@storybook/addon-actions";
+import {
+  ReactImageSelector,
+  calculateCurrentSelections,
+} from "../components/React-Image-Selector/react-image-selector";
 
 <Meta title="React Image Selector" component={ReactImageSelector} />
 
 # React Image Selector
 
-With `MDX` we can define a story for `React Image Selector` right in the middle of our markdown documentation. Defaults 2
+With `MDX` we can define a story for `React Image Selector` right in the middle of our markdown documentation. Defaults 4
 
 export const availableImages = [
   { src: "./assets/chinstrap.jpg", value: "chinstrap" },
@@ -29,10 +33,34 @@ export const logEvent = (evt) => {
   action(evt.type)(evt.detail);
 };
 
-export const PrimaryTemplate = () => {
-  return <ReactImageSelector availableImages={availableImages} />;
+export const PrimaryTemplate = ({ multiple, imageStyles }) => {
+  const [selectedImageValues, setSelectedImageValues] = useState([
+    "emperor",
+    "unknown",
+  ]);
+  const handleOnPick = (image) => {
+    const newSelections = multiple
+      ? calculateCurrentSelections(image, selectedImageValues)
+      : [image?.value];
+    setSelectedImageValues(newSelections);
+    logEvent({
+      type: "onPick",
+      detail: { imageSelected: image, newSelections },
+    });
+  };
+  return (
+    <ReactImageSelector
+      availableImages={availableImages}
+      selectedImages={selectedImageValues}
+      onPick={handleOnPick}
+      imageStyles={imageStyles}
+      multiple={multiple}
+    />
+  );
 };
 
 <Canvas>
-  <Story name="RIS Default Template">{PrimaryTemplate.bind({})}</Story>
+  <Story name="RIS Default Template" args={args}>
+    {PrimaryTemplate.bind({})}
+  </Story>
 </Canvas>
