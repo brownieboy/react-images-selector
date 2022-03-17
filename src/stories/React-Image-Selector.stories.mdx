@@ -4,18 +4,22 @@ import { action } from "@storybook/addon-actions";
 import {
   ReactImageSelector,
   calculateCurrentSelections,
-  // } from "react-image-selector";
 } from "../components/React-Image-Selector/react-image-selector";
-
-// import type { RISImageType } from "react-image-selector";
-import type { RISImageType } from "../components/React-Image-Selector/react-image-selector";
 
 <Meta title="React Image Selector" component="ReactImageSelector" />
 
-export const Template = () => {
+export const Template = (args) => {
   return <div>Hey there</div>;
 };
 
 # React Image Selector
 
 Blah blah blah about React Image Selector
+
+## Demo
+
+<Canvas>
+  <Story name="Default">
+    {Template.bind({})}
+  </Story>
+</Canvas>
