@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { action } from "@storybook/addon-actions";
+import Checkbox from "@mui/material/Checkbox";
+import Radio from "@mui/material/Radio";
 import {
   ReactImageSelector,
   calculateCurrentSelections,
@@ -38,6 +40,8 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
     "emperor",
     "unknown",
   ]);
+  const [materialControls, setMaterialControls] = useState(false);
+  const SelectorControl = multiple ? Checkbox : Radio;
   const handleOnPick = (image) => {
     const newSelections = multiple
       ? calculateCurrentSelections(image, selectedImageValues)
@@ -48,14 +52,31 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
       detail: { imageSelected: image, newSelections },
     });
   };
+  const handleMaterialControls = () => {
+    setMaterialControls(!materialControls);
+  };
   return (
-    <ReactImageSelector
-      availableImages={availableImages}
-      selectedImages={selectedImageValues}
-      onPick={handleOnPick}
-      imageStyles={imageStyles}
-      multiple={multiple}
-    />
+    <>
+      <ReactImageSelector
+        availableImages={availableImages}
+        selectedImages={selectedImageValues}
+        onPick={handleOnPick}
+        imageStyles={imageStyles}
+        multiple={multiple}
+        SelectorControl={materialControls ? SelectorControl : undefined}
+      />
+      <div style={{ marginTop: "50px" }}>
+        <label htmlFor="usematerial">
+          <input
+            type="checkbox"
+            id="usematerial"
+            checked={materialControls}
+            onChange={handleMaterialControls}
+          />
+          Use Material {multiple ? "checkbox" : "radio button"} controls
+        </label>
+      </div>
+    </>
   );
 };
 
