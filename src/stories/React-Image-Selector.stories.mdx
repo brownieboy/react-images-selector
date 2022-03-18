@@ -70,16 +70,28 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
         }
       />
       {!docsMode ? (
-        <div style={{ marginTop: "50px" }}>
-          <label htmlFor="usematerial">
-            <input
-              type="checkbox"
-              id="usematerial"
-              checked={materialControls}
-              onChange={handleMaterialControls}
-            />
-            Use Material {multiple ? "checkbox" : "radio button"} controls
-          </label>
+        <div
+          style={{
+            fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
+          }}
+        >
+          <div style={{ marginTop: "50px" }}>
+            <label htmlFor="usematerial">
+              <input
+                type="checkbox"
+                id="usematerial"
+                checked={materialControls}
+                onChange={handleMaterialControls}
+              />
+              Use Material {multiple ? "checkbox" : "radio button"} controls
+            </label>
+          </div>
+          <div style={{marginTop: 40}}>
+            See Controls tab <span style={{ fontSize: 30 }}>👇</span> for props.
+            See also the component's Docs tab{" "}
+            <span style={{ fontSize: 30 }}>☝</span>
+            for a fuller description.
+          </div>
         </div>
       ) : null}
     </>
