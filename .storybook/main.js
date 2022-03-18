@@ -1,8 +1,10 @@
 module.exports = {
-  stories: ["../src/stories/React-Image-Selector.stories.tsx",
-  "../src/**/*.stories.mdx",
-  "../src/**/*.stories.@(js|jsx|ts|tsx)"
-],
+  stories: [
+    "../src/stories/React-Image-Selector.stories.mdx",
+    // "../src/stories/Button.stories.mdx",
+    // "../src/**/*.stories.mdx",
+    // "../src/**/*.stories.@(js|jsx|ts|tsx)"
+  ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",

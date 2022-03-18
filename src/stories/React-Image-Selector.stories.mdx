@@ -1,0 +1,92 @@
+import { useState } from "react";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { action } from "@storybook/addon-actions";
+import Checkbox from "@mui/material/Checkbox";
+import Radio from "@mui/material/Radio";
+import {
+  ReactImageSelector,
+  calculateCurrentSelections,
+} from "../components/React-Image-Selector/react-image-selector";
+
+<Meta title="React Image Selector" component={ReactImageSelector} />
+
+# React Image Selector
+
+With `MDX` we can define a story for `React Image Selector` right in the middle of our markdown documentation. Defaults 4
+
+export const availableImages = [
+  { src: "./assets/chinstrap.jpg", value: "chinstrap" },
+  { src: "./assets/emperor.jpg", value: "emperor" },
+  { src: "./assets/king.jpg", value: "king" },
+  { src: "./assets/little.jpg", value: "little" },
+];
+
+export const args = {
+  multiple: true,
+  imageStyles: {
+    maxHeight: 300,
+    maxWidth: 300,
+    height: 150,
+    width: 150,
+  },
+};
+
+export const logEvent = (evt) => {
+  action(evt.type)(evt.detail);
+};
+
+export const PrimaryTemplate = ({ multiple, imageStyles }) => {
+  const [selectedImageValues, setSelectedImageValues] = useState([
+    "emperor",
+    "unknown",
+  ]);
+  const [materialControls, setMaterialControls] = useState(false);
+  const docsMode = window.location.search.includes("viewMode=docs");
+  const SelectorControl = multiple ? Checkbox : Radio;
+  const handleOnPick = (image) => {
+    const newSelections = multiple
+      ? calculateCurrentSelections(image, selectedImageValues)
+      : [image?.value];
+    setSelectedImageValues(newSelections);
+    logEvent({
+      type: "onPick",
+      detail: { imageSelected: image, newSelections },
+    });
+  };
+  const handleMaterialControls = () => {
+    setMaterialControls(!materialControls);
+  };
+  return (
+    <>
+      <ReactImageSelector
+        availableImages={availableImages}
+        selectedImages={selectedImageValues}
+        onPick={handleOnPick}
+        imageStyles={imageStyles}
+        multiple={multiple}
+        SelectorControl={
+          materialControls && !docsMode ? SelectorControl : undefined
+        }
+      />
+      {!docsMode ? (
+        <div style={{ marginTop: "50px" }}>
+          <label htmlFor="usematerial">
+            <input
+              type="checkbox"
+              id="usematerial"
+              checked={materialControls}
+              onChange={handleMaterialControls}
+            />
+            Use Material {multiple ? "checkbox" : "radio button"} controls
+          </label>
+        </div>
+      ) : null}
+    </>
+  );
+};
+
+<Canvas>
+  <Story name="RIS Default Template" args={args}>
+    {PrimaryTemplate.bind({})}
+  </Story>
+</Canvas>

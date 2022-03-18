@@ -7,10 +7,6 @@ import type { ImageType } from "./image";
 
 export type { ImageType as RISImageType };
 
-// function checkIsArrayString(x) {
-//   return x.every((i) => typeof i === "string");
-// }
-
 export const calculateCurrentSelections = (
   toggledImage: string | ImageType,
   selectedImages: string[] | ImageType[]
