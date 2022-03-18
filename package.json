@@ -1,6 +1,6 @@
 {
   "name": "react-image-selector",
-  "description": "React component to picks images from gallery",
+  "description": "React component to select images from gallery",
   "author": "Michael Brown",
   "version": "0.1.0",
   "repository": {

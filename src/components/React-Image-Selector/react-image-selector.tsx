@@ -66,9 +66,9 @@ export interface ReactImageSelectorProps {
  * A React selector for images, single or multi-choice.
  */
 export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
-  availableImages,
+  availableImages = [],
   onPick,
-  selectedImages,
+  selectedImages = [],
   imageStyles,
   multiple = false,
   SelectorControl,
