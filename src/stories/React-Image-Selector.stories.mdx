@@ -69,31 +69,34 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
           materialControls && !docsMode ? SelectorControl : undefined
         }
       />
-      {!docsMode ? (
-        <div
-          style={{
-            fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
-          }}
-        >
-          <div style={{ marginTop: "50px" }}>
-            <label htmlFor="usematerial">
-              <input
-                type="checkbox"
-                id="usematerial"
-                checked={materialControls}
-                onChange={handleMaterialControls}
-              />
-              Use Material {multiple ? "checkbox" : "radio button"} controls
-            </label>
+      <div
+        style={{
+          fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
+        }}
+      >
+        {!docsMode ? (
+          <div>
+            <div style={{ marginTop: "50px" }}>
+              <label htmlFor="usematerial">
+                <input
+                  type="checkbox"
+                  id="usematerial"
+                  checked={materialControls}
+                  onChange={handleMaterialControls}
+                />
+                Use Material {multiple ? "checkbox" : "radio button"} controls
+              </label>
+            </div>
+            <div style={{ marginTop: 40 }}>
+              Use the Controls tab <span style={{ fontSize: 30 }}>👇</span> to
+              dynamically change props and see what they do to the component.
+              Switch to the component's Docs tab{" "}
+              <span style={{ fontSize: 30 }}>☝</span>
+              for a fuller description of how the component works.
+            </div>
           </div>
-          <div style={{marginTop: 40}}>
-            See Controls tab <span style={{ fontSize: 30 }}>👇</span> for props.
-            See also the component's Docs tab{" "}
-            <span style={{ fontSize: 30 }}>☝</span>
-            for a fuller description.
-          </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </>
   );
 };
@@ -106,6 +109,11 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
 
 ## Props
 
-<ArgsTable of={ReactImageSelector} />
+<span style={{ fontSize: 25 }}>💡</span> Switch to the Canvas Tab <span
+  style={{ fontSize: 30 }}
+>
+  ☝
+</span> to use the Controls feature, where you can dynamically change props and see
+what they do to the component.
 
-<ArgsTable of={RISImage} />
+<ArgsTable of={ReactImageSelector} />
