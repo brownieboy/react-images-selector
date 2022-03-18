@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { ArgsTable, Meta, Story, Canvas } from "@storybook/addon-docs";
 import { action } from "@storybook/addon-actions";
 import Checkbox from "@mui/material/Checkbox";
 import Radio from "@mui/material/Radio";
@@ -86,7 +86,9 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
 };
 
 <Canvas>
-  <Story name="RIS Default Template" args={args}>
+  <Story name="Default" args={args}>
     {PrimaryTemplate.bind({})}
   </Story>
 </Canvas>
+
+<ArgsTable story={"Default"} />
