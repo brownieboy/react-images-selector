@@ -37,10 +37,7 @@ export const logEvent = (evt) => {
 };
 
 export const PrimaryTemplate = ({ multiple, imageStyles }) => {
-  const [selectedImageValues, setSelectedImageValues] = useState([
-    "emperor",
-    "unknown",
-  ]);
+  const [selectedImageValues, setSelectedImageValues] = useState(["emperor"]);
   const [materialControls, setMaterialControls] = useState(false);
   const docsMode = window.location.search.includes("viewMode=docs");
   const SelectorControl = multiple ? Checkbox : Radio;
@@ -72,6 +69,8 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
       <div
         style={{
           fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
+          fontSize: 14,
+          color: "#333333",
         }}
       >
         {!docsMode ? (
@@ -88,11 +87,14 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
               </label>
             </div>
             <div style={{ marginTop: 40 }}>
-              Use the Controls tab <span style={{ fontSize: 30 }}>👇</span> to
-              dynamically change props and see what they do to the component.
-              Switch to the component's Docs tab{" "}
-              <span style={{ fontSize: 30 }}>☝</span>
-              for a fuller description of how the component works.
+              <span style={{ fontSize: 25 }}>💡</span> Use the Controls tab{" "}
+              <span style={{ fontSize: 30 }}>👇</span> to dynamically change
+              props and see what they do to the component, and the Actions tab{" "}
+              <span style={{ fontSize: 30 }}>👇</span> to see what its returned
+              to your handler function when you select images. Switch to the
+              component's Docs tab <span style={{ fontSize: 30 }}>☝</span>
+              for a fuller description of how the component works, including a code
+              example.
             </div>
           </div>
         ) : null}
@@ -107,13 +109,38 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
   </Story>
 </Canvas>
 
-## Props
+## Props and Actions
 
-<span style={{ fontSize: 25 }}>💡</span> Switch to the Canvas Tab <span
-  style={{ fontSize: 30 }}
->
-  ☝
-</span> to use the Controls feature, where you can dynamically change props and see
-what they do to the component.
+<div style={{ fontSize: 14, color: "#333333" }}>
+  <span style={{ fontSize: 25 }}>💡</span> Switch to the Canvas Tab{" "}
+  <span style={{ fontSize: 30 }}> ☝</span> to use the Controls feature, where
+  you can dynamically change props and see what they do to the component.
+</div>
+
+You need to at least pass the `availableImages` prop (array of `ImageType`), otherwise your selector will have nothing to show 😉 ! `ImageType` is an object with two properties: `value` and `url`, both of type `String`.
+
+### State
+
+The selector componenent is stateless. You must pass in `selectedImages` (array of `String`) so the selector knows which images are currently selected.
+
+### onPick Function handler
+
+Because it's' stateless, the control cannot compute what your new selected images are. You must do that yourself and pass in a new `selectedImages` prop each time.
+
+You must use your `onPick` function handler prop for this. This handler function will a single parameter, which is the image that was just selected (i.e. clicked). This `image` parameter is of type `ImageType` again. Your function must take this value, compute the new `selectedImages` value from it, and then pass it back to the selector control as an updated problem.
+
+#### Computing the new `selectedImages` Prop
+
+_How_ you compute the new `selectedImages` prop is entirely up to you.
+
+If the selector is single image selector (prop `multiple` is false or not set at all) then it's easy: the image just clicked is now your selected image!
+
+If it's a `multiple` selector, however, it's a bit more tricky. Remember, the `image` parameter passed to your `onPick` handler function contains no other selection information.  All you know is that image has just been clicked. The selector control doesn't click was to select the image or to unselect if it was already selected. You'll have to handle this in your own code.
+
+### Props Table
 
 <ArgsTable of={ReactImageSelector} />
+
+## Github Repo
+
+https://github.com/brownieboy/react-image-selector
