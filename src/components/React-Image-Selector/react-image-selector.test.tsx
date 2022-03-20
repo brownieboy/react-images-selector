@@ -8,14 +8,16 @@ import {
 import { availableImages } from "./test-data/availableImages.js";
 
 test("renders a selector", () => {
-  render(<ReactImageSelector />);
+  render(<ReactImageSelector availableImages={[]} selectedImages={[]} />);
 
   const picker = screen.getByRole("select");
   expect(picker).toBeInTheDocument();
 });
 
 test("renders 4 images in selector", () => {
-  render(<ReactImageSelector availableImages={availableImages} />);
+  render(
+    <ReactImageSelector availableImages={availableImages} selectedImages={[]} />
+  );
   const images = screen.getAllByRole("img");
   expect(images).toHaveLength(4);
   expect(images[3]).toBeInTheDocument();

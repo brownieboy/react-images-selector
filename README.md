@@ -2,6 +2,8 @@
 
 A stateless image selector for React. Let's you pass in a array of available images and passes back events to let you know which one has been selected. Available as single (radio button) or multiple (checkbox) selector.
 
+![React Image Selector - animated demo](images/animated-demo.gif "Demo")
+
 ## Documentation
 
 See documentation https://brownieboy.github.io/react-image-selector/
