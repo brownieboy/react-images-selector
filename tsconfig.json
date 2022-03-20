@@ -26,6 +26,6 @@
   },
   "include": [
     "src/components"
-    // , "src/stories/React-Image-Selector.stories.tsx"
+    // , "src/stories/React-Images-Selector.stories.tsx"
   ]
 }

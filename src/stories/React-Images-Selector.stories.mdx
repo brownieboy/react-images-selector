@@ -6,14 +6,14 @@ import Radio from "@mui/material/Radio";
 import {
   ReactImageSelector,
   calculateCurrentSelections,
-} from "../components/React-Image-Selector/react-image-selector";
-import { RISImage } from "../components/React-Image-Selector/react-image-selector";
+  RISImage
+} from "../components/React-Images-Selector/react-images-selector";
 
-import { availableImages } from "../components/React-Image-Selector/test-data/availableImages";
+import { availableImages } from "../components/React-Images-Selector/test-data/availableImages";
 
-<Meta title="React Image Selector" component={ReactImageSelector} />
+<Meta title="React Images Selector" component={ReactImageSelector} />
 
-# React Image Selector
+# React Images Selector
 
 A stateless image selector for React. Let's you pass in a array of available images and passes back events to let you know which one has been selected. Available as single (radio button) or multiple (checkbox) selector.
 
@@ -100,12 +100,12 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
 
 ## Installation and Usage
 
-Either `npm i react-image-selector` or `yarn add react-image-selector` to install.
+Either `npm i react-images-selector` or `yarn add react-images-selector` to install.
 
 Import into your own React app like so:
 
 ```js
-import { ReactImageSelector } from "react-image-selector";
+import { ReactImageSelector } from "react-images-selector";
 ```
 
 ## Working Example
@@ -200,7 +200,7 @@ This pattern is implemented in a helper function called `calculateCurrentSelecti
 import {
   ReactImageSelector,
   calculateCurrentSelections,
-} from "react-image-selector";
+} from "react-images-selector";
 ```
 
 And then use it in your `onPick` function handler like so:
@@ -218,10 +218,10 @@ where `setSelectedImageValues` is from a hook that you might use to store your v
 
 ## Github Repo
 
-https://github.com/brownieboy/react-image-selector
+https://github.com/brownieboy/react-images-selector
 
 ## Acknowledgements
 
-React Image Selector was based upon original work from React Image Picker https://github.com/bagongkia/react-image-picker
+React Images Selector was based upon original work from React Image Picker https://github.com/bagongkia/react-image-picker
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), with [Storybook](https://storybook.js.org/) added in afterwards.

@@ -1,6 +1,6 @@
 module.exports = {
   stories: [
-    "../src/stories/React-Image-Selector.stories.mdx",
+    "../src/stories/React-Images-Selector.stories.mdx",
     // "../src/stories/Button.stories.mdx",
     // "../src/**/*.stories.mdx",
     // "../src/**/*.stories.@(js|jsx|ts|tsx)"

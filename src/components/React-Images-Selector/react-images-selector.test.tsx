@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import {
   ReactImageSelector,
   calculateCurrentSelections,
-} from "./react-image-selector";
+} from "./react-images-selector";
 
 import { availableImages } from "./test-data/availableImages.js";
 

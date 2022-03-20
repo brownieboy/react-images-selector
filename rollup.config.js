@@ -3,7 +3,7 @@ import typescript from "@rollup/plugin-typescript";
 import postcss from "rollup-plugin-postcss";
 
 const config = {
-  input: "src/components/React-Image-Selector/react-image-selector.tsx",
+  input: "src/components/React-Images-Selector/react-images-selector.tsx",
   output: {
     dir: "dist",
     // format: "cjs",
