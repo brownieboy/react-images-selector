@@ -8,6 +8,6 @@ See documentation https://brownieboy.github.io/react-image-selector/
 
 ## Acknowledgements
 
-React Image Selecor is based on original work from React Image Picker https://github.com/bagongkia/react-image-picker
+React Image Selector was based upon original work from React Image Picker https://github.com/bagongkia/react-image-picker
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), with [Storybook](https://storybook.js.org/) added in afterwards.

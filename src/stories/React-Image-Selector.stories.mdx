@@ -13,7 +13,7 @@ import { RISImage } from "../components/React-Image-Selector/react-image-selecto
 
 # React Image Selector
 
-With `MDX` we can define a story for `React Image Selector` right in the middle of our markdown documentation. Defaults 4
+A stateless image selector for React. Let's you pass in a array of available images and passes back events to let you know which one has been selected. Available as single (radio button) or multiple (checkbox) selector.
 
 export const availableImages = [
   { src: "./assets/chinstrap.jpg", value: "chinstrap" },
@@ -103,11 +103,41 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
   );
 };
 
+## Installation and Usage
+
+Either `npm i react-image-selector` or `yarn add react-image-selector` to install.
+
+Import into your own React app like so:
+```js
+import {ReactImageSelector} from "react-image-selector";
+```
+
+## Working Example
+
+Here's how you might call use the component in your own app
+```jsx
+<ReactImageSelector
+  availableImages={availableImages}
+  selectedImages={selectedImageValues}
+  onPick={handleOnPick}
+  imageStyles={imageStyles}
+  multiple={multiple}
+  SelectorControl={
+    materialControls && !docsMode ? SelectorControl : undefined
+  }
+/>
+```
+This _is_, in fact, how it the component is being used in the Storybook story that you're reading now.  Click on the *Show Code* tab on the working example below.
+
 <Canvas>
   <Story name="Default" args={args}>
     {PrimaryTemplate.bind({})}
   </Story>
 </Canvas>
+
+### Props Table
+
+<ArgsTable of={ReactImageSelector} />
 
 ## Props and Actions
 
@@ -117,7 +147,23 @@ export const PrimaryTemplate = ({ multiple, imageStyles }) => {
   you can dynamically change props and see what they do to the component.
 </div>
 
-You need to at least pass the `availableImages` prop (array of `ImageType`), otherwise your selector will have nothing to show 😉 ! `ImageType` is an object with two properties: `value` and `url`, both of type `String`.
+You need to at least pass the `availableImages` prop (array of `ImageType`), otherwise your selector will have nothing to show 😉 !
+
+`ImageType` is an object with two properties, `value` and `url`, both of type `String`:
+```ts
+export type ImageType = {
+  /**
+   * A string value that is assumed to be unique to this image.  It can be the file name.
+   */
+  value: string;
+  /**
+   * A URL pointing to where the image is hosted
+   */
+  src: string;
+};
+```
+
+  The `value` can be whatever you want - an id, an file name - but it needs to be unique or bad things will happen.
 
 ### State
 
@@ -125,7 +171,7 @@ The selector componenent is stateless. You must pass in `selectedImages` (array 
 
 ### onPick Function handler
 
-Because it's' stateless, the control cannot compute what your new selected images are. You must do that yourself and pass in a new `selectedImages` prop each time.
+Because it's stateless, the control cannot compute what your new selected images are. You must do that yourself and pass in a new `selectedImages` prop each time.
 
 You must use your `onPick` function handler prop for this. This handler function will a single parameter, which is the image that was just selected (i.e. clicked). This `image` parameter is of type `ImageType` again. Your function must take this value, compute the new `selectedImages` value from it, and then pass it back to the selector control as an updated problem.
 
@@ -135,12 +181,49 @@ _How_ you compute the new `selectedImages` prop is entirely up to you.
 
 If the selector is single image selector (prop `multiple` is false or not set at all) then it's easy: the image just clicked is now your selected image!
 
-If it's a `multiple` selector, however, it's a bit more tricky. Remember, the `image` parameter passed to your `onPick` handler function contains no other selection information.  All you know is that image has just been clicked. The selector control doesn't click was to select the image or to unselect if it was already selected. You'll have to handle this in your own code.
+If it's a `multiple` selector, however, it's a bit more tricky. Remember, the `image` parameter passed to your `onPick` handler function contains no other selection information.  All you know is that image has just been clicked. The selector control doesn't tell you if that click was to select a previously unselected image or to unselect a previously selected one. You'll have to track all that in your own code.
 
-### Props Table
+Here's some sample code to get you started:
+```jsx title="Computing a new selectedImages prop"
+  if (selectedImageValues.includes(valueToCheck)) {
+    return selectedImageValues.filter(
+      (member: string) => member !== valueToCheck
+    );
+  } else {
+    return [...selectedImageValues, valueToCheck];
+  }
+```
 
-<ArgsTable of={ReactImageSelector} />
+Is a simple toggle.  If the selected value is in the array, it's removed.  If it's not in the array then it's appended to it.  The component also exports a helper function called `calculateCurrentSelections`, which uses the code above.  You can import this into your app like so:
+
+```js
+import {
+  ReactImageSelector,
+  calculateCurrentSelections,
+} from "react-image-selector";
+```
+
+And then use it in your `onPick` function handler like so:
+```js
+  const handleOnPick = (image) => {
+    const newSelections = multiple
+      ? calculateCurrentSelections(image, selectedImageValues)ß
+      : [image?.value];
+    setSelectedImageValues(newSelections);
+  };
+```
+
+where `setSelectedImageValues` is from a hook that you might use to store your values.  Click on the **Show code** link on the Working Example panel above, and you see the full version of this usage.
+
+
 
 ## Github Repo
 
 https://github.com/brownieboy/react-image-selector
+
+## Acknowledgements
+
+React Image Selector was based upon original work from React Image Picker https://github.com/bagongkia/react-image-picker
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), with [Storybook](https://storybook.js.org/) added in afterwards.
+
