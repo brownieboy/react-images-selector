@@ -8,6 +8,7 @@
     "url": "git@github.com:brownieboy/react-image-selector.git"
   },
   "homepage": "https://brownieboy.github.io/react-image-selector/",
+  "license": "MIT",
   "main": "dist/react-image-selector.js",
   "module": "dist/react-image-selector.js",
   "jsnext:main": "dist/react-image-selector.js",
