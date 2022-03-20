@@ -119,7 +119,7 @@ export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
 
   return availableImages ? (
     <>
-      <div className="image_picker" data-testid="react-image-selector">
+      <div className="image_picker" role="select">
         {availableImages.map(renderImage)}
         <div className="clear" />
       </div>

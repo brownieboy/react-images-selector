@@ -8,14 +8,25 @@ import {
 
 import { availableImages } from "./test-data/availableImages.js";
 
-test("Renders an empty selector", () => {
+test("No props Renders an empty selector", () => {
+  render(
+    <ReactImageSelector />
+  );
+
+  const picker = screen.getByRole("select");
+  expect(picker).toBeInTheDocument();
+});
+
+test("With props, renders a selector with 4 images", () => {
   render(
     <ReactImageSelector availableImages={availableImages} selectedImages={[]} />
   );
 
-  const picker = screen.getByTestId("react-image-selector");
-  expect(picker).toBeInTheDocument();
+  const images = screen.getAllByRole("img");
+  expect (images).toHaveLength(4);
+
 });
+
 
 /*
 import React from 'react';
