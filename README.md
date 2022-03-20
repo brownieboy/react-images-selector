@@ -6,6 +6,14 @@ A stateless image selector for React. Let's you pass in a array of available ima
 
 See documentation https://brownieboy.github.io/react-image-selector/
 
+## Contributing
+
+Please read the [Contributing Guide](CONTRIBUTING.md)
+
+## Change History
+
+See [Change Log](CHANGELOG.md)
+
 ## Acknowledgements
 
 React Image Selector was based upon original work from React Image Picker https://github.com/bagongkia/react-image-picker
