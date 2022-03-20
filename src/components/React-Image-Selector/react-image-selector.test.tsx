@@ -2,16 +2,18 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import {
   ReactImageSelector,
-  calculateCurrentSelections,
+  // calculateCurrentSelections,
 } from "./react-image-selector";
 // import type { RISImage } from "./React-Image-Selector/react-image-selector";
 
-import { availableImages } from "./test-data/availableImages";
+import { availableImages } from "./test-data/availableImages.js";
 
 test("Renders an empty selector", () => {
-  render(<ReactImageSelector availableImages={availableImages} />);
+  render(
+    <ReactImageSelector availableImages={availableImages} selectedImages={[]} />
+  );
 
-  const picker = screen.getByTestId('react-image-picker')
+  const picker = screen.getByTestId("react-image-selector");
   expect(picker).toBeInTheDocument();
 });
 
