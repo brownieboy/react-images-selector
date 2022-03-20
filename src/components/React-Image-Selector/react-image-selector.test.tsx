@@ -72,13 +72,13 @@ test("clicking 'emperor' returns it to onPick handler", () => {
   expect(selectedImage).toBe("chinstrap");
 });
 
-test("calculateCurrentSelections adds 'king' image", () => {
+test("calculateCurrentSelections helper func adds 'king' image", () => {
   expect(
     calculateCurrentSelections("king", ["chinstrap", "emperor"])
   ).toStrictEqual(["chinstrap", "emperor", "king"]);
 });
 
-test("calculateCurrentSelections removes 'emperor' image", () => {
+test("calculateCurrentSelections helper func removes 'emperor' image", () => {
   expect(
     calculateCurrentSelections("emperor", ["chinstrap", "emperor", "king"])
   ).toStrictEqual(["chinstrap", "king"]);
