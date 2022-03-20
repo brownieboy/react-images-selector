@@ -32,7 +32,6 @@ const Image: FunctionComponent<ImageProps> = ({
     <div
       className={`responsive${isSelected ? " selected" : ""}`}
       onClick={onImageClick}
-      data-testid="react-image-selector-image"
     >
       <img
         src={src}

@@ -56,10 +56,6 @@ test("renders 4 radios, 'emperor' selected", () => {
 test("clicking 'emperor' returns it to onPick handler", () => {
   let selectedImage: string = "";
   const handlePick = jest.fn((image: any) => {
-    console.log(
-      "TCL ~ file: react-image-selector.test.tsx ~ line 59 ~ handlePick ~ image",
-      image
-    );
     selectedImage = image.value;
   });
   render(
