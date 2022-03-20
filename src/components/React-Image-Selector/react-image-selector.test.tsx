@@ -1,5 +1,5 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+import React, { useState } from "react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import {
   ReactImageSelector,
   // calculateCurrentSelections,
@@ -52,6 +52,39 @@ test("renders 4 radios, 'emperor' selected", () => {
   expect(radios[2]).not.toBeChecked();
   expect(radios[3]).not.toBeChecked();
 });
+
+test("clicking 'emperor' returns it to onPick handler", () => {
+  let selectedImage: string = "";
+  const handlePick = jest.fn((image: any) => {
+    console.log(
+      "TCL ~ file: react-image-selector.test.tsx ~ line 59 ~ handlePick ~ image",
+      image
+    );
+    selectedImage = image.value;
+  });
+  render(
+    <ReactImageSelector
+      availableImages={availableImages}
+      multiple
+      selectedImages={[]}
+      onPick={handlePick}
+    />
+  );
+
+  const checkboxes = screen.getAllByRole("checkbox");
+  fireEvent.click(checkboxes[0]);
+  expect(handlePick).toHaveBeenCalledTimes(1);
+  expect(selectedImage).toBe("chinstrap");
+});
+
+// render(<Fetch url="/greeting" />)
+
+// fireEvent.click(screen.getByText('Load Greeting'))
+
+// await waitFor(() => screen.getByRole('alert'))
+
+// expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
+// expect(screen.getByRole('button')).not.toBeDisabled()
 
 // test("Calls ", () => {
 //   render(
