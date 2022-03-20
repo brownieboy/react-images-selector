@@ -1,3 +1,21 @@
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import {
+  ReactImageSelector,
+  calculateCurrentSelections,
+} from "./react-image-selector";
+// import type { RISImage } from "./React-Image-Selector/react-image-selector";
+
+import { availableImages } from "./test-data/availableImages";
+
+test("Renders an empty selector", () => {
+  render(<ReactImageSelector availableImages={availableImages} />);
+
+  const picker = screen.getByTestId('react-image-picker')
+  expect(picker).toBeInTheDocument();
+});
+
+/*
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -35,3 +53,4 @@ describe('<Button />', () => {
     expect(wrapper.hasClass(props.className)).toBe(true);
   });
 });
+*/

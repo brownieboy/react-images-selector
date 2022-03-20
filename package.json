@@ -33,8 +33,7 @@
   "scripts": {
     "startsite": "react-scripts start",
     "buildsite": "react-scripts build",
-    "testsite": "react-scripts test",
-    "eject": "react-scripts eject",
+    "test": "react-scripts test",
     "build": "rimraf dist && rollup -c",
     "build:watch": "rollup -c -w",
     "storybook": "start-storybook -p 6006",

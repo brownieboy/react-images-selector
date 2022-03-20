@@ -9,18 +9,13 @@ import {
 } from "../components/React-Image-Selector/react-image-selector";
 import { RISImage } from "../components/React-Image-Selector/react-image-selector";
 
+import { availableImages } from "../components/React-Image-Selector/test-data/availableImages";
+
 <Meta title="React Image Selector" component={ReactImageSelector} />
 
 # React Image Selector
 
 A stateless image selector for React. Let's you pass in a array of available images and passes back events to let you know which one has been selected. Available as single (radio button) or multiple (checkbox) selector.
-
-export const availableImages = [
-  { src: "./assets/chinstrap.jpg", value: "chinstrap" },
-  { src: "./assets/emperor.jpg", value: "emperor" },
-  { src: "./assets/king.jpg", value: "king" },
-  { src: "./assets/little.jpg", value: "little" },
-];
 
 export const args = {
   multiple: true,

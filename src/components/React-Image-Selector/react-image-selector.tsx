@@ -14,7 +14,6 @@ export const calculateCurrentSelections = (
   const valueToCheck =
     typeof toggledImage === "string" ? toggledImage : toggledImage?.value;
 
-
   const selectedImageValues = selectedImages.map((image) =>
     // @ts-ignore
     image.value ? image.value : image
@@ -120,7 +119,7 @@ export const ReactImageSelector: FunctionComponent<ReactImageSelectorProps> = ({
 
   return availableImages ? (
     <>
-      <div className="image_picker">
+      <div className="image_picker" data-testid="react-image-selector">
         {availableImages.map(renderImage)}
         <div className="clear" />
       </div>
