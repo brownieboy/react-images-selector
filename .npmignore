@@ -3,5 +3,9 @@
 /public
 rollup.config.js
 tsconfig.js
+tsconfig.json
 yarn.lock
 .storybook
+/storybook-static
+*.tgz
+*.log
