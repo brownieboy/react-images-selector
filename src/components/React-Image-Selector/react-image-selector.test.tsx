@@ -8,7 +8,7 @@ import {
 
 import { availableImages } from "./test-data/availableImages.js";
 
-test("render a selector", () => {
+test("renders a selector", () => {
   render(<ReactImageSelector />);
 
   const picker = screen.getByRole("select");
@@ -48,6 +48,9 @@ test("renders 4 radios, 'emperor' selected", () => {
   const radios = screen.getAllByRole("radio");
   expect(radios).toHaveLength(4);
   expect(radios[1]).toBeChecked(); // Emperor is 2nd element
+  expect(radios[0]).not.toBeChecked();
+  expect(radios[2]).not.toBeChecked();
+  expect(radios[3]).not.toBeChecked();
 });
 
 // test("Calls ", () => {
