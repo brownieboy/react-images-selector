@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import {
   ReactImageSelector,
-  // calculateCurrentSelections,
+  calculateCurrentSelections,
 } from "./react-image-selector";
-// import type { RISImage } from "./React-Image-Selector/react-image-selector";
 
 import { availableImages } from "./test-data/availableImages.js";
 
@@ -71,4 +70,16 @@ test("clicking 'emperor' returns it to onPick handler", () => {
   fireEvent.click(checkboxes[0]);
   expect(handlePick).toHaveBeenCalledTimes(1);
   expect(selectedImage).toBe("chinstrap");
+});
+
+test("calculateCurrentSelections adds 'king' image", () => {
+  expect(
+    calculateCurrentSelections("king", ["chinstrap", "emperor"])
+  ).toStrictEqual(["chinstrap", "emperor", "king"]);
+});
+
+test("calculateCurrentSelections removes 'emperor' image", () => {
+  expect(
+    calculateCurrentSelections("emperor", ["chinstrap", "emperor", "king"])
+  ).toStrictEqual(["chinstrap", "king"]);
 });
