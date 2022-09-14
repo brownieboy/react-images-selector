@@ -9,12 +9,12 @@ export type { ImageType as RISImageType };
 
 export const calculateCurrentSelections = (
   toggledImage: string | ImageType,
-  selectedImages: string[] | ImageType[]
+  selectedImages: string[] | ImageType[] = []
 ) => {
   const valueToCheck =
     typeof toggledImage === "string" ? toggledImage : toggledImage?.value;
 
-  const selectedImageValues = selectedImages.map((image) =>
+  const selectedImageValues = selectedImages?.map((image) =>
     // @ts-ignore
     image.value ? image.value : image
   );
