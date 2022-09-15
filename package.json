@@ -2,7 +2,7 @@
   "name": "react-images-selector",
   "description": "React component to select images from gallery",
   "author": "Michael Brown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:brownieboy/react-images-selector.git"
@@ -37,6 +37,7 @@
     "build": "rimraf dist && rollup -c",
     "build:watch": "rollup -c -w",
     "storybook": "start-storybook -p 6006",
+    "start": "start-storybook -p 6006",
     "build-storybook": "rimraf storybook-static && build-storybook",
     "build-storybook-docs": "rimraf storybook-static && build-storybook --docs",
     "deploy-storybook": "gh-pages -d storybook-static"
